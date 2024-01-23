@@ -131,7 +131,7 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-GITHUB_REDIRECT_URL = 'https://ambrose-alpha.vercel.app/auth/github'
+GITHUB_REDIRECT_URL = 'https://ambrose-jade.vercel.app/auth/github'
 CORS_ALLOW_ALL_ORIGINS = True
 CORS_ALLOW_CREDENTIALS = True
 
