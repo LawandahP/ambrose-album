@@ -25,8 +25,9 @@ class GitHubAuthView(APIView):
                 },
             )
 
-            if response.status_code != 200:
-                # If the first request fails, try again with a different redirect_uri
+            response_json = response.json()
+            if response_json.get('error') == 'redirect_uri_mismatch':
+                # If the error is 'redirect_uri_mismatch', try again with a different redirect_uri
                 response = requests.post(
                     'https://github.com/login/oauth/access_token',
                     headers={
@@ -43,6 +44,6 @@ class GitHubAuthView(APIView):
 
             # Handle the response from either the first or second request
             if response.status_code == 200:
-                return Response(response.json())
+                return Response(response.json(), status=200)
             else:
                 return Response({'details': 'Failed to retrieve access token'}, status=response.status_code)
