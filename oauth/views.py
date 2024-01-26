@@ -46,5 +46,3 @@ class GitHubAuthView(APIView):
                 return Response(response.json())
             else:
                 return Response({'details': 'Failed to retrieve access token'}, status=response.status_code)
-        else:
-            return Response(serializer.errors, status=400)
